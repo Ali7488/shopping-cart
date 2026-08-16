@@ -1,0 +1,19 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact"
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "errorLens.enabled": true,
+    "errorLens.messageBackgroundMode": "line",
+    "workbench.colorCustomizations": {
+        "errorLens.errorForeground": "#f38ba8",
+        "errorLens.errorBackground": "#f38ba81a",
+        "errorLens.warningForeground": "#fab387",
+        "errorLens.warningBackground": "#fab3871a"
+    }
+}
