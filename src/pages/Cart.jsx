@@ -44,7 +44,7 @@ export default function Cart() {
       </div>
 
       <div className="flex flex-col items-end gap-4">
-        <p className="text-xl md:text-2xl font-bold">Your Total: {cartTotal.toFixed(2)}</p>
+        <p className="text-xl md:text-2xl font-bold">Your Total: ${cartTotal.toFixed(2)}</p>
         <button
           type="button"
           aria-disabled={true}
