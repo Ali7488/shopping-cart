@@ -47,7 +47,7 @@ function App() {
           to="/cart"
         >
           Cart{" "}
-          <span className="font-bold bg-[var(--color-primary)] text-[var(--color-text-inverse)] rounded-full px-2 min-w-8 h-8 inline-flex justify-center items-center text-base">
+          <span className="font-bold bg-[var(--color-primary)] text-[var(--color-text-inverse)] rounded-full px-2 min-w-4 h-6 md:min-w-8 md:h-8 inline-flex justify-center items-center text-base">
             {cartTotalItems}
           </span>
         </Link>

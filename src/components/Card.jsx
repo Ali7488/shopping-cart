@@ -21,26 +21,35 @@ export default function Card({ image, rating, title, id, updateCartQuantity, pri
   }
 
   return (
-    <div className="productCard" id={id}>
-      <img src={image} alt={title} />
-      <div className="cardHeader">
-        <h4>{title}</h4>
-        <h3>${price}</h3>
+    <div className="flex flex-col p-2 md:p-4 gap-2 md:gap-6 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl shadow-sm hover:scale-102 transition hover:shadow-lg transition">
+      <img src={image} alt={title} className="w-full object-contain h-100 md:h-75" />
+      <div className="flex flex-col gap-2">
+        <h4 className="font-semibold text-lg text-[var(--color-text)] leading-tight">{title}</h4>
+        <p className="text-base leading-tight">${price.toFixed(2)}</p>
       </div>
-      {Array.from({ length: numberOfStars }, (_, index) => {
-        return <Star size={10} strokeWidth={1.5} key={index} />;
-      })}
 
-      <ButtonGroup
-        handleIncrement={handleIncrement}
-        handleDecrement={handleDecrement}
-        handleInput={handleInput}
-        quantity={quantity}
-        minQuantity={1}
-      />
-      <button type="button" onClick={() => updateCartQuantity(id, quantity)}>
-        Add To Cart{" "}
-      </button>
+      <div className="flex items-center gap-1">
+        {Array.from({ length: numberOfStars }, (_, index) => {
+          return <Star size={20} strokeWidth={1.5} key={index} />;
+        })}
+      </div>
+
+      <div className="flex flex-col gap-2 mt-auto">
+        <ButtonGroup
+          handleIncrement={handleIncrement}
+          handleDecrement={handleDecrement}
+          handleInput={handleInput}
+          quantity={quantity}
+          minQuantity={1}
+        />
+        <button
+          type="button"
+          onClick={() => updateCartQuantity(id, quantity)}
+          className="w-full py-2 md:py-4 rounded-lg bg-[var(--color-primary)] text-[var(--color-text-inverse)] font-semibold text-lg hover:bg-[var(--color-primary-hover)] transition-colors active:scale-95 transition-transform duration-100"
+        >
+          Add To Cart
+        </button>
+      </div>
     </div>
   );
 }

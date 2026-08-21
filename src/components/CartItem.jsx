@@ -29,7 +29,7 @@ export default function CartItem({ product, quantity, updateCartQuantity }) {
       </div>
 
       <div className="controlSection">
-        <h3>Price per item: ${product.price}</h3>
+        <h3>Price per item: ${product.price.toFixed(2)}</h3>
         <ButtonGroup
           handleIncrement={handleIncrement}
           handleDecrement={handleDecrement}
