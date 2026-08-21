@@ -3,7 +3,7 @@ export function ButtonGroup({
   handleDecrement,
   handleInput,
   quantity,
-  minQuantity,
+  handleBlur,
 }) {
   return (
     <div className="flex justify-center items-center py-2">
@@ -19,9 +19,10 @@ export function ButtonGroup({
       <input
         type="number"
         value={quantity}
-        min={minQuantity}
+        min={1}
         max={99}
         onChange={handleInput}
+        onBlur={handleBlur}
         className="text-xl bg-[var(--color-primary-soft)] text-center p-2 text-[var(--color-text)] focus:ring-[var(--color-primary)] focus:ring-1 focus:outline-none font-bold w-full"
       />
 

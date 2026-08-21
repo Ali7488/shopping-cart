@@ -15,9 +15,22 @@ export default function Card({ image, rating, title, id, handleAddToCart, price 
   }
 
   function handleInput(event) {
-    const quantityInput = Number(event.target.value);
+    const value = event.target.value;
+
+    if (value === "") {
+      setQuantity("");
+      return;
+    }
+
+    const quantityInput = Number(value);
     const clampedValue = Math.min(99, Math.max(1, quantityInput));
     setQuantity(clampedValue);
+  }
+
+  function handleBlur() {
+    if (quantity === "") {
+      setQuantity(1);
+    }
   }
 
   return (
@@ -40,7 +53,7 @@ export default function Card({ image, rating, title, id, handleAddToCart, price 
           handleDecrement={handleDecrement}
           handleInput={handleInput}
           quantity={quantity}
-          minQuantity={1}
+          handleBlur={handleBlur}
         />
         <button
           type="button"
