@@ -2,10 +2,11 @@ import { useOutletContext } from "react-router";
 import Card from "../components/Card";
 
 export default function Shop() {
-  const { products, updateCartQuantity, loading, error } = useOutletContext();
+  const { products, handleAddToCart, loading, error } = useOutletContext();
 
   if (loading) return <h3>Loading our AMAZING products...</h3>;
   if (error) return <h3>Server Error</h3>;
+
   return (
     <section className="grid grid-row-2 space-y-8 md:space-y-12 w-full p-4">
       <h1 className="text-2xl md:text-4xl font-bold text-[var(--color-text)]">Our Products:</h1>
@@ -20,7 +21,7 @@ export default function Shop() {
               title={product.title}
               price={product.price}
               id={product.id}
-              updateCartQuantity={updateCartQuantity}
+              handleAddToCart={handleAddToCart}
             />
           );
         })}

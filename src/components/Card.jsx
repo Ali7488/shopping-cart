@@ -2,7 +2,7 @@ import { Star } from "lucide-react";
 import { useState } from "react";
 import { ButtonGroup } from "./ButtonGroup";
 
-export default function Card({ image, rating, title, id, updateCartQuantity, price }) {
+export default function Card({ image, rating, title, id, handleAddToCart, price }) {
   const [quantity, setQuantity] = useState(1);
   const numberOfStars = Math.round(rating.rate);
 
@@ -44,7 +44,7 @@ export default function Card({ image, rating, title, id, updateCartQuantity, pri
         />
         <button
           type="button"
-          onClick={() => updateCartQuantity(id, quantity)}
+          onClick={() => handleAddToCart(id, quantity, title)}
           className="w-full py-2 md:py-4 rounded-lg bg-[var(--color-primary)] text-[var(--color-text-inverse)] font-semibold text-lg hover:bg-[var(--color-primary-hover)] transition active:scale-95 transition duration-100"
         >
           Add To Cart
