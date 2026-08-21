@@ -1,7 +1,8 @@
 import { Star } from "lucide-react";
 import { useState } from "react";
+import { ButtonGroup } from "./ButtonGroup";
 
-export default function Card({ image, rating, title, id, handleAddToCart }) {
+export default function Card({ image, rating, title, id, updateCartQuantity }) {
   const [quantity, setQuantity] = useState(1);
   const numberOfStars = Math.round(rating.rate);
 
@@ -32,23 +33,10 @@ export default function Card({ image, rating, title, id, handleAddToCart }) {
         handleDecrement={handleDecrement}
         handleInput={handleInput}
         quantity={quantity}
+        minQuantity={1}
       />
-      <button type="button" onClick={() => handleAddToCart(id, quantity)}>
+      <button type="button" onClick={() => updateCartQuantity(id, quantity)}>
         Add To Cart{" "}
-      </button>
-    </div>
-  );
-}
-
-function ButtonGroup({ handleIncrement, handleDecrement, handleInput, quantity }) {
-  return (
-    <div className="buttonGroup">
-      <button type="button" aria-label="reduce quantity" onClick={handleDecrement}>
-        -
-      </button>
-      <input type="number" value={quantity} min={1} max={99} onChange={handleInput} />
-      <button type="button" aria-label="increase quantity" onClick={handleIncrement}>
-        +
       </button>
     </div>
   );

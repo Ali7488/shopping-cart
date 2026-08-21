@@ -10,7 +10,16 @@ function App() {
   // Cart state, uses ID to retrieve product information from the products array
   const [cart, setCart] = useState([]);
 
-  function handleAddToCart(itemId, itemQuantity) {
+  //Temporary for development
+  console.log(products);
+  console.log(cart);
+
+  function updateCartQuantity(itemId, itemQuantity) {
+    if (itemQuantity <= 0) {
+      setCart((prev) => prev.filter((item) => item.id !== itemId));
+      return;
+    }
+
     setCart((prev) =>
       prev.some((item) => item.id === itemId)
         ? prev.map((item) => {
@@ -31,7 +40,7 @@ function App() {
         <Link to="/cart">Cart</Link>
       </nav>
       <main>
-        <Outlet context={{ products, loading, error, cart, handleAddToCart }} />
+        <Outlet context={{ products, loading, error, cart, updateCartQuantity }} />
       </main>
       <footer></footer>
     </>
