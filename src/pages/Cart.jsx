@@ -1,19 +1,31 @@
 import { useOutletContext } from "react-router";
+import CartItem from "../components/CartItem";
 
 export default function Cart() {
-  const { products, cart } = useOutletContext();
+  const { updateCartQuantity, products, cart } = useOutletContext();
+  const cartTotal = cart.reduce((accumulator, item) => {
+    const cartItem = products.find((product) => product.id === item.id);
+    const subtotal = cartItem.price * item.quantity;
+    return accumulator + subtotal;
+  }, 0);
   return (
     <>
       <h1>Your Items</h1>
-      {/* Note that the div is temporary until component is made*/}
       {cart.map((item) => {
         const cartItem = products.find((product) => product.id === item.id);
         return (
-          <div>
-            <img src={cartItem.image} /> {cartItem.title} {item.quantity}
-          </div>
+          <CartItem
+            key={item.id}
+            product={cartItem}
+            quantity={item.quantity}
+            updateCartQuantity={updateCartQuantity}
+          />
         );
       })}
+      <h3>Your Total: {cartTotal.toFixed(2)}</h3>
+      <button type="button" aria-disabled={true} disabled>
+        Checkout (Dummy button)
+      </button>
     </>
   );
 }

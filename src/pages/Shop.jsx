@@ -17,6 +17,7 @@ export default function Shop() {
             image={product.image}
             rating={product.rating}
             title={product.title}
+            price={product.price}
             id={product.id}
             updateCartQuantity={updateCartQuantity}
           />

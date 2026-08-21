@@ -2,7 +2,7 @@ import { Star } from "lucide-react";
 import { useState } from "react";
 import { ButtonGroup } from "./ButtonGroup";
 
-export default function Card({ image, rating, title, id, updateCartQuantity }) {
+export default function Card({ image, rating, title, id, updateCartQuantity, price }) {
   const [quantity, setQuantity] = useState(1);
   const numberOfStars = Math.round(rating.rate);
 
@@ -23,7 +23,10 @@ export default function Card({ image, rating, title, id, updateCartQuantity }) {
   return (
     <div className="productCard" id={id}>
       <img src={image} alt={title} />
-      <h4>{title}</h4>
+      <div className="cardHeader">
+        <h4>{title}</h4>
+        <h3>${price}</h3>
+      </div>
       {Array.from({ length: numberOfStars }, (_, index) => {
         return <Star size={10} strokeWidth={1.5} key={index} />;
       })}

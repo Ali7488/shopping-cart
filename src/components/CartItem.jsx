@@ -29,7 +29,7 @@ export default function CartItem({ product, quantity, updateCartQuantity }) {
       </div>
 
       <div className="controlSection">
-        <h3>Price per item: {product.price}</h3>
+        <h3>Price per item: ${product.price}</h3>
         <ButtonGroup
           handleIncrement={handleIncrement}
           handleDecrement={handleDecrement}
@@ -37,7 +37,7 @@ export default function CartItem({ product, quantity, updateCartQuantity }) {
           quantity={quantity}
           minQuantity={0}
         />
-        <h3>Subtotal: {subtotal}</h3>
+        <h3>Subtotal: ${subtotal.toFixed(2)}</h3>
       </div>
     </>
   );

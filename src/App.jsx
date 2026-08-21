@@ -10,10 +10,6 @@ function App() {
   // Cart state, uses ID to retrieve product information from the products array
   const [cart, setCart] = useState([]);
 
-  //Temporary for development
-  console.log(products);
-  console.log(cart);
-
   function updateCartQuantity(itemId, itemQuantity) {
     if (itemQuantity <= 0) {
       setCart((prev) => prev.filter((item) => item.id !== itemId));
