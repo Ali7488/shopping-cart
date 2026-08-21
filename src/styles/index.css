@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   /* Colors */
   --color-background: #ffffff;
@@ -131,147 +133,148 @@
   }
 }
 
-/* Reset */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@layer base {
+  /* Reset */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-html {
-  min-width: 320px;
-  min-height: 100%;
-}
+  html {
+    min-width: 320px;
+    min-height: 100%;
+  }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  overflow-wrap: break-word;
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    overflow-wrap: break-word;
 
-  color: var(--color-text);
-  background-color: var(--color-background);
-}
+    color: var(--color-text);
+    background-color: var(--color-background);
+  }
 
-#root {
-  min-height: 100vh;
-}
+  #root {
+    min-height: 100vh;
+  }
 
-/* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin-top: 0;
-}
+  /* Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin-top: 0;
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: var(--line-height-tight);
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: var(--line-height-tight);
+  }
 
-h1 {
-  font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
-}
+  h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+  }
 
-h2 {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-}
+  h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+  }
 
-h3 {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semibold);
-}
+  h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+  }
 
-h4 {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
-}
+  h4 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+  }
 
-p {
-  font-size: var(--font-size-md);
-}
+  p {
+    font-size: var(--font-size-md);
+  }
 
-small {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-}
+  small {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
 
-/* Links */
-a {
-  color: var(--color-link);
-  font-weight: var(--font-weight-semibold);
-  text-decoration: none;
-}
+  /* Links */
+  a {
+    color: var(--color-link);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+  }
 
-@media (hover: hover) {
-  a:hover {
-    color: var(--color-link-hover);
+  @media (hover: hover) {
+    a:hover {
+      color: var(--color-link-hover);
+    }
+  }
+
+  /* Controls */
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  input:disabled,
+  textarea:disabled,
+  select:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  /* Media */
+  img,
+  picture,
+  svg,
+  canvas {
+    display: block;
+    max-width: 100%;
+  }
+
+  img {
+    height: auto;
+  }
+
+  /* Focus */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  a:focus-visible {
+    border-radius: var(--radius-sm);
+  }
+
+  /* Selection */
+  ::selection {
+    color: var(--color-text-inverse);
+    background-color: var(--color-primary);
   }
 }
-
-/* Controls */
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-button:disabled,
-input:disabled,
-textarea:disabled,
-select:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-/* Media */
-img,
-picture,
-svg,
-canvas {
-  display: block;
-  max-width: 100%;
-}
-
-img {
-  height: auto;
-}
-
-/* Focus */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-a:focus-visible {
-  border-radius: var(--radius-sm);
-}
-
-/* Selection */
-::selection {
-  color: var(--color-text-inverse);
-  background-color: var(--color-primary);
-}
-
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -285,7 +288,7 @@ a:focus-visible {
 }
 
 /* Container */
-.container {
+.site-container {
   width: min(calc(100% - (var(--space-md) * 2)), var(--container-xl));
   margin-inline: auto;
 }

@@ -8,6 +8,16 @@ export default function Cart() {
     const subtotal = cartItem.price * item.quantity;
     return accumulator + subtotal;
   }, 0);
+
+  if (cart.length === 0) {
+    return (
+      <>
+        <h1>Your Items:</h1>
+        <h2>You dont currently have any items in cart</h2>
+      </>
+    );
+  }
+
   return (
     <>
       <h1>Your Items</h1>
