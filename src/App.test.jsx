@@ -158,7 +158,7 @@ describe("Shopster", () => {
 
     expect(screen.getByText("Test Jacket")).toBeInTheDocument();
     expect(screen.getByText("Subtotal: $50.00")).toBeInTheDocument();
-    expect(screen.getByText("Your Total: 50.00")).toBeInTheDocument();
+    expect(screen.getByText("Your Total: $50.00")).toBeInTheDocument();
   });
 
   it("updates an existing cart item instead of creating a duplicate", async () => {
