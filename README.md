@@ -1,8 +1,10 @@
 # Shopster
 
+![CI](https://github.com/Ali7488/shopping-cart/actions/workflows/ci.yml/badge.svg)
+
 Shopster is a responsive storefront built with React. It fetches products from the Fake Store API, organizes the application into routed pages, and keeps cart state centralized so quantities and totals remain consistent across the interface.
 
-[Live Demo](https://shopping-cart-atop3.vercel.app)
+[Live Demo](https://shopping-cart-ali7488.vercel.app/)
 
 > **Status:** In development. The core browsing and cart flows are implemented; checkout is intentionally non-functional
 
