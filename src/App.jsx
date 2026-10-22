@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router";
 import { useShopApi } from "./hooks/useShopApi";
 
 function App() {
-  const { error, loading, products } = useShopApi();
+  const { error, loading, products, usingSampleProducts, retry } = useShopApi();
 
   const [cart, setCart] = useState([]);
   const [cartNotification, setCartNotification] = useState(null);
@@ -95,6 +95,31 @@ function App() {
       </nav>
 
       <main className="w-full mx-auto max-w-7xl p-2 md:p-6">
+        {usingSampleProducts && (
+          <aside
+            aria-label="Sample catalogue"
+            className="mb-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-muted)] p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div>
+              <p className="font-semibold">Sample catalogue</p>
+              <p>
+                The live catalogue is unavailable. Browse fictional products and try the cart.
+                Checkout is disabled.
+              </p>
+              {cart.length > 0 && (
+                <p className="mt-1 text-sm">Empty your cart to retry the live catalogue.</p>
+              )}
+            </div>
+            <button
+              type="button"
+              onClick={retry}
+              disabled={loading || cart.length > 0}
+              className="shrink-0 rounded-lg border border-[var(--color-border)] px-4 py-2 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? "Retrying…" : "Retry live catalogue"}
+            </button>
+          </aside>
+        )}
         <Outlet
           context={{
             products,
