@@ -74,7 +74,8 @@ npm run dev
 
 - Checkout is a disabled demonstration button; there is no payment flow.
 - Cart state is not persisted after a page refresh.
-- Product availability depends on the external Fake Store API.
+- Live products depend on the external Fake Store API. If a request fails, takes longer than eight seconds, or returns an unusable catalogue, the app shows a labelled sample catalogue with bundled images.
+- Retrying the live catalogue requires an empty cart, so switching catalogues cannot invalidate existing cart items or change their prices.
 
 ## Acknowledgements
 
